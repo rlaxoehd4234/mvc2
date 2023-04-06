@@ -19,6 +19,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class PostService {
 
     // 저장 메서드
     public Long save(PostSaveRequestDto requestDto){
+
 
         User findedUser = requestDto.toEntity().getUser();
 

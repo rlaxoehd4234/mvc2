@@ -5,14 +5,19 @@ import com.umbrella.project_umbrella.domain.User.User;
 import lombok.Builder;
 import lombok.Getter;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 @Getter
 public class PostSaveRequestDto {
 
 
+    @NotBlank
     private String title;
-
+    @NotBlank
+    @Size(min = 30, max = 1000)
     private String content;
-
+    @NotBlank
     private String writer;
 
 

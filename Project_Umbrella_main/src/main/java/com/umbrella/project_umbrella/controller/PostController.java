@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,12 +24,12 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping
-    public Long save(@RequestBody PostSaveRequestDto requestDto){ // 게시물 & 댓글 가져오기
+    public Long save(@Validated @RequestBody PostSaveRequestDto requestDto){ // 게시물 & 댓글 가져오기
         return postService.save(requestDto);
     }
 
     @PutMapping("/{id}")
-    public Long update(@PathVariable Long id, PostUpdateRequestDto requestDto){
+    public Long update(@PathVariable Long id, @Validated PostUpdateRequestDto requestDto){
         return postService.update(id, requestDto);
     }
     @GetMapping("/{id}")

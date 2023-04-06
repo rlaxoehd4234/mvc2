@@ -5,10 +5,13 @@ import com.umbrella.project_umbrella.domain.User.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -21,9 +24,12 @@ public class Post {
     @Column(nullable = true)
     private Long id;
 
+    @NotNull
     @Column(length = 500)
     private String title;
 
+    @NotNull
+    @Size(min = 50, max= 1000)
     @Column(columnDefinition = "TEXT")
     private String content;
 
